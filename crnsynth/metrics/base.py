@@ -1,6 +1,6 @@
 """Base metric class for CRN synthesis metrics."""
 
-from typing import Union
+from typing import Optional, Union
 
 import pandas as pd
 
@@ -32,8 +32,8 @@ class BaseMetric:
         self,
         data_train: pd.DataFrame,
         data_synth: pd.DataFrame,
-        data_holdout: Union[pd.DataFrame, None] = None,
-    ) -> float:
+        data_holdout: Optional[pd.DataFrame] = None,
+    ) -> dict:
         """Compute the metric."""
         raise NotImplementedError("compute() method not implemented")
 
