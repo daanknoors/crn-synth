@@ -4,6 +4,7 @@ import pytest
 from crnsynth.metrics.performance.survival import (
     MedianSurvivalScore,
     PredictedMedianSurvivalScore,
+    SurvivalCurvesDistanceScore,
 )
 
 
@@ -54,6 +55,15 @@ def test_predicted_median_survival_score(data_train, data_synth, data_holdout):
         duration_column="duration",
         event_column="event",
         feature_columns=["feature1", "feature2"],
+    )
+    result = metric.compute(data_train, data_synth, data_holdout)
+    assert "score" in result
+
+
+def test_survival_curves_distance_score(data_train, data_synth, data_holdout):
+    metric = SurvivalCurvesDistanceScore(
+        duration_column="duration",
+        event_column="event",
     )
     result = metric.compute(data_train, data_synth, data_holdout)
     assert "score" in result

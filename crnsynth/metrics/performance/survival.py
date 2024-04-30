@@ -2,7 +2,6 @@ from typing import Any, Dict, Optional, Union
 
 import numpy as np
 import pandas as pd
-from pydantic import validate_arguments
 from scipy.integrate import trapezoid
 
 from crnsynth.metrics.base import BaseMetric
@@ -146,6 +145,66 @@ class PredictedMedianSurvivalScore(BaseMetric):
             data_synth=data_synth,
             data_holdout=data_holdout,
             feature_columns=self.feature_columns,
+            duration_column=self.duration_column,
+            event_column=self.event_column,
+        )
+        return {"score": score}
+
+
+def survival_curves_deviation(data_hybrid, data_real, duration_column, event_column):
+    """Compute the deviation between survival curves of the original and
+    synthetic data."""
+    kmf_real = fit_kaplanmeier(data_real[duration_column], data_real[event_column])
+    kmf_hybrid = fit_kaplanmeier(
+        data_hybrid[duration_column], data_hybrid[event_column]
+    )
+
+    Tmax = max(kmf_real.timeline.max(), kmf_hybrid.timeline.max())
+    Tmin = min(kmf_real.timeline.min(), kmf_hybrid.timeline.min())
+    Tmin = max(0, Tmin)
+
+    time_points = np.linspace(Tmin, Tmax, 200)
+
+    S_hybrid = kmf_hybrid.survival_function_at_times(time_points)
+    S_real = kmf_real.survival_function_at_times(time_points)
+
+    return trapezoid(abs(S_hybrid.values - S_real.values)) / Tmax
+
+
+class SurvivalCurvesDistanceScore(BaseMetric):
+    """Survival curves distance score."""
+
+    def __init__(
+        self, duration_column, event_column, encoder=None, **kwargs: Any
+    ) -> None:
+        super().__init__(encoder=encoder, **kwargs)
+        self.duration_column = duration_column
+        self.event_column = event_column
+
+    @staticmethod
+    def direction() -> str:
+        return "minimize"
+
+    @staticmethod
+    def type() -> str:
+        return "performance"
+
+    def compute(
+        self,
+        data_train: pd.DataFrame,
+        data_synth: pd.DataFrame,
+        data_holdout: Optional[pd.DataFrame] = None,
+    ) -> dict:
+        data_train, data_synth, data_holdout = self.encode(
+            data_train=data_train,
+            data_synth=data_synth,
+            data_holdout=data_holdout,
+            return_dataframe=True,
+        )
+
+        score = survival_curves_deviation(
+            data_hybrid=data_synth,
+            data_real=data_train,
             duration_column=self.duration_column,
             event_column=self.event_column,
         )
