@@ -1,28 +1,26 @@
-"""This metric describes how difficult it is for an attacker to correctly guess the sensitive information using an algorithm called Correct Attribution Probability (CAP)"""
+from typing import Any, Dict, Optional
 
-from typing import Any, Dict, Union
-
-import numpy as np
 import pandas as pd
-from sdmetrics.single_table import CategoricalCAP
-from sklearn.preprocessing import OrdinalEncoder
+from sdmetrics.single_table import CategoricalKNN
 
 from crnsynth.metrics.base import BaseMetric
 from crnsynth.processing.utils import sample_subset
 
 
-class CategoricalCAPScore(BaseMetric):
-    """Categorical Correct Attribution Probability (CAP) score metric. This metric describes how difficult it is for an
-    attacker to correctly guess the sensitive information based on a synthetic dataset and a fraction of the variables
-    in the original dataset.
+class CategoricalKNNScore(BaseMetric):
+    """Categorical K-Nearest Neighbors (KNN) score metric by SDMetrics.
+
+    It is used to train a model to predict sensitive attributes from key attributes
+    using the synthetic data. Then, evaluate the privacy of the model by
+    trying to predict the sensitive attributes of the real data.
     """
 
     def __init__(
         self,
         categorical_columns=None,
         frac_sensitive=0.5,
-        encoder="ordinal",
         random_state=None,
+        encoder=None,
         **kwargs: Any
     ) -> None:
         super().__init__(encoder=encoder, **kwargs)
@@ -42,8 +40,8 @@ class CategoricalCAPScore(BaseMetric):
         self,
         data_train: pd.DataFrame,
         data_synth: pd.DataFrame,
-        data_holdout: Union[pd.DataFrame, None] = None,
-    ) -> Dict:
+        data_holdout: Optional[pd.DataFrame] = None,
+    ) -> dict:
         self._check_params()
 
         # subset data to categorical columns
@@ -65,13 +63,14 @@ class CategoricalCAPScore(BaseMetric):
             data_train, data_synth, data_holdout, return_dataframe=True
         )
 
-        # compute CAP score
-        score = CategoricalCAP.compute(
+        # compute the score
+        score = CategoricalKNN.compute(
             real_data=data_train,
             synthetic_data=data_synth,
             key_fields=known_columns,
             sensitive_fields=sensitive_columns,
         )
+
         return {"score": score}
 
     def _check_params(self):
