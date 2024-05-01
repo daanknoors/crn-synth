@@ -245,10 +245,17 @@
 
             <div class="docstring"><p>Perform a one-sided t-test with a non-inferiority threshold for two independent samples.</p>
 
-<p>Args:
-    TODO
-Returns:
-    TODO</p>
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li>TODO</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>TODO</p>
+</blockquote>
 </div>
 
 
@@ -346,30 +353,39 @@ Returns:
 <p>Based on notes from "Two-Sample Non-Inferiority Tests for Survival Data using Cox Regression"
 by NCSS.</p>
 
-<p>The test hypotheses are:
-    H0: Insufficient evidence that group A is superior to group B
-    H1: Can reject H0</p>
+<h6 id="the-test-hypotheses-are">The test hypotheses are:</h6>
+
+<blockquote>
+  <p>H0: Insufficient evidence that group A is superior to group B
+  H1: Can reject H0</p>
+</blockquote>
 
 <p>By rejecting H0, non-inferiority can be thus concluded at the given
 significance level between two groups.</p>
 
-<p>Args:
-    data: Input data with group indicator variable, time to even and possibly
-        additional covariates.
-    margin: Threshold to determine the test outcome. Should be &gt; 1 if
-        lower is better. Otherwise &lt; 1.
-    duration_col: Name of the column that contains the time to event.
-    group_col: Name of the column indicating the groups.
-    event_col (optional): Name of the column that contains the death
-        observations. If left as None, assume all individuals are uncensored.
-    lower_is_better: Determine the angle of the test for the two groups.
-        E.g.: If the endpoint represents death or relapse, higher hazards are
-        said to be worse and lower is better. Alternatively, if duration is the time
-        to cure or remission, then higher hazards are better.
-    alpha: Test significance level.</p>
+<h6 id="arguments">Arguments:</h6>
 
-<p>Returns:
-    Test results.</p>
+<ul>
+<li><strong>data:</strong>  Input data with group indicator variable, time to even and possibly
+additional covariates.</li>
+<li><strong>margin:</strong>  Threshold to determine the test outcome. Should be &gt; 1 if
+lower is better. Otherwise &lt; 1.</li>
+<li><strong>duration_col:</strong>  Name of the column that contains the time to event.</li>
+<li><strong>group_col:</strong>  Name of the column indicating the groups.</li>
+<li><strong>event_col (optional):</strong>  Name of the column that contains the death
+observations. If left as None, assume all individuals are uncensored.</li>
+<li><strong>lower_is_better:</strong>  Determine the angle of the test for the two groups.
+E.g.: If the endpoint represents death or relapse, higher hazards are
+said to be worse and lower is better. Alternatively, if duration is the time
+to cure or remission, then higher hazards are better.</li>
+<li><strong>alpha:</strong>  Test significance level.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Test results.</p>
+</blockquote>
 </div>
 
 

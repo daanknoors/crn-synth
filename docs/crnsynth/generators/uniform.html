@@ -83,17 +83,22 @@
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate synthetic data by sampling columns using the uniform distribution.&quot;&quot;&quot;</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">UniformSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the uniform distribution.&quot;&quot;&quot;</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the generator.</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">        Args:</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">            epsilon (float): privacy budget for differential privacy.</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">UniformSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the uniform distribution.&quot;&quot;&quot;</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -113,17 +118,22 @@
 </span><span id="UniformGenerator-10"><a href="#UniformGenerator-10"><span class="linenos">10</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate synthetic data by sampling columns using the uniform distribution.&quot;&quot;&quot;</span>
 </span><span id="UniformGenerator-11"><a href="#UniformGenerator-11"><span class="linenos">11</span></a>
 </span><span id="UniformGenerator-12"><a href="#UniformGenerator-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="UniformGenerator-13"><a href="#UniformGenerator-13"><span class="linenos">13</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="UniformGenerator-14"><a href="#UniformGenerator-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
-</span><span id="UniformGenerator-15"><a href="#UniformGenerator-15"><span class="linenos">15</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">UniformSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
-</span><span id="UniformGenerator-16"><a href="#UniformGenerator-16"><span class="linenos">16</span></a>
-</span><span id="UniformGenerator-17"><a href="#UniformGenerator-17"><span class="linenos">17</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="UniformGenerator-18"><a href="#UniformGenerator-18"><span class="linenos">18</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
-</span><span id="UniformGenerator-19"><a href="#UniformGenerator-19"><span class="linenos">19</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
-</span><span id="UniformGenerator-20"><a href="#UniformGenerator-20"><span class="linenos">20</span></a>
-</span><span id="UniformGenerator-21"><a href="#UniformGenerator-21"><span class="linenos">21</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-</span><span id="UniformGenerator-22"><a href="#UniformGenerator-22"><span class="linenos">22</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the uniform distribution.&quot;&quot;&quot;</span>
-</span><span id="UniformGenerator-23"><a href="#UniformGenerator-23"><span class="linenos">23</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
+</span><span id="UniformGenerator-13"><a href="#UniformGenerator-13"><span class="linenos">13</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the generator.</span>
+</span><span id="UniformGenerator-14"><a href="#UniformGenerator-14"><span class="linenos">14</span></a>
+</span><span id="UniformGenerator-15"><a href="#UniformGenerator-15"><span class="linenos">15</span></a><span class="sd">        Args:</span>
+</span><span id="UniformGenerator-16"><a href="#UniformGenerator-16"><span class="linenos">16</span></a><span class="sd">            epsilon (float): privacy budget for differential privacy.</span>
+</span><span id="UniformGenerator-17"><a href="#UniformGenerator-17"><span class="linenos">17</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="UniformGenerator-18"><a href="#UniformGenerator-18"><span class="linenos">18</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="UniformGenerator-19"><a href="#UniformGenerator-19"><span class="linenos">19</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
+</span><span id="UniformGenerator-20"><a href="#UniformGenerator-20"><span class="linenos">20</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">UniformSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
+</span><span id="UniformGenerator-21"><a href="#UniformGenerator-21"><span class="linenos">21</span></a>
+</span><span id="UniformGenerator-22"><a href="#UniformGenerator-22"><span class="linenos">22</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="UniformGenerator-23"><a href="#UniformGenerator-23"><span class="linenos">23</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
+</span><span id="UniformGenerator-24"><a href="#UniformGenerator-24"><span class="linenos">24</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
+</span><span id="UniformGenerator-25"><a href="#UniformGenerator-25"><span class="linenos">25</span></a>
+</span><span id="UniformGenerator-26"><a href="#UniformGenerator-26"><span class="linenos">26</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="UniformGenerator-27"><a href="#UniformGenerator-27"><span class="linenos">27</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the uniform distribution.&quot;&quot;&quot;</span>
+</span><span id="UniformGenerator-28"><a href="#UniformGenerator-28"><span class="linenos">28</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -142,13 +152,26 @@
     </div>
     <a class="headerlink" href="#UniformGenerator.__init__"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="UniformGenerator.__init__-12"><a href="#UniformGenerator.__init__-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="UniformGenerator.__init__-13"><a href="#UniformGenerator.__init__-13"><span class="linenos">13</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="UniformGenerator.__init__-14"><a href="#UniformGenerator.__init__-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
-</span><span id="UniformGenerator.__init__-15"><a href="#UniformGenerator.__init__-15"><span class="linenos">15</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">UniformSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
+</span><span id="UniformGenerator.__init__-13"><a href="#UniformGenerator.__init__-13"><span class="linenos">13</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the generator.</span>
+</span><span id="UniformGenerator.__init__-14"><a href="#UniformGenerator.__init__-14"><span class="linenos">14</span></a>
+</span><span id="UniformGenerator.__init__-15"><a href="#UniformGenerator.__init__-15"><span class="linenos">15</span></a><span class="sd">        Args:</span>
+</span><span id="UniformGenerator.__init__-16"><a href="#UniformGenerator.__init__-16"><span class="linenos">16</span></a><span class="sd">            epsilon (float): privacy budget for differential privacy.</span>
+</span><span id="UniformGenerator.__init__-17"><a href="#UniformGenerator.__init__-17"><span class="linenos">17</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="UniformGenerator.__init__-18"><a href="#UniformGenerator.__init__-18"><span class="linenos">18</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="UniformGenerator.__init__-19"><a href="#UniformGenerator.__init__-19"><span class="linenos">19</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
+</span><span id="UniformGenerator.__init__-20"><a href="#UniformGenerator.__init__-20"><span class="linenos">20</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">UniformSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
 </span></pre></div>
 
 
-    
+            <div class="docstring"><p>Initialize the generator.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>epsilon (float):</strong>  privacy budget for differential privacy.</li>
+</ul>
+</div>
+
 
                             </div>
                             <div id="UniformGenerator.epsilon" class="classattr">
@@ -184,9 +207,9 @@
 
     </div>
     <a class="headerlink" href="#UniformGenerator.fit"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="UniformGenerator.fit-17"><a href="#UniformGenerator.fit-17"><span class="linenos">17</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="UniformGenerator.fit-18"><a href="#UniformGenerator.fit-18"><span class="linenos">18</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
-</span><span id="UniformGenerator.fit-19"><a href="#UniformGenerator.fit-19"><span class="linenos">19</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="UniformGenerator.fit-22"><a href="#UniformGenerator.fit-22"><span class="linenos">22</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="UniformGenerator.fit-23"><a href="#UniformGenerator.fit-23"><span class="linenos">23</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
+</span><span id="UniformGenerator.fit-24"><a href="#UniformGenerator.fit-24"><span class="linenos">24</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -206,9 +229,9 @@
 
     </div>
     <a class="headerlink" href="#UniformGenerator.generate"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="UniformGenerator.generate-21"><a href="#UniformGenerator.generate-21"><span class="linenos">21</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-</span><span id="UniformGenerator.generate-22"><a href="#UniformGenerator.generate-22"><span class="linenos">22</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the uniform distribution.&quot;&quot;&quot;</span>
-</span><span id="UniformGenerator.generate-23"><a href="#UniformGenerator.generate-23"><span class="linenos">23</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="UniformGenerator.generate-26"><a href="#UniformGenerator.generate-26"><span class="linenos">26</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="UniformGenerator.generate-27"><a href="#UniformGenerator.generate-27"><span class="linenos">27</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the uniform distribution.&quot;&quot;&quot;</span>
+</span><span id="UniformGenerator.generate-28"><a href="#UniformGenerator.generate-28"><span class="linenos">28</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
 </span></pre></div>
 
 

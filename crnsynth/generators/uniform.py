@@ -9,6 +9,11 @@ class UniformGenerator(BaseGenerator):
     """Generate synthetic data by sampling columns using the uniform distribution."""
 
     def __init__(self, epsilon: float, **kwargs) -> None:
+        """Initialize the generator.
+
+        Args:
+            epsilon (float): privacy budget for differential privacy.
+        """
         super().__init__()
         self.epsilon = epsilon
         self.model = UniformSynthesizer(epsilon=epsilon)

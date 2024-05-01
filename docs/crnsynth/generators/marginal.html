@@ -87,17 +87,24 @@
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">MarginalSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the marginal distribution.&quot;&quot;&quot;</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the generator.</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">        Args:</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">            epsilon: privacy budget for differential privacy.</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">            verbose: Verbosity level.</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">MarginalSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the marginal distribution.&quot;&quot;&quot;</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -120,17 +127,24 @@
 </span><span id="MarginalGenerator-14"><a href="#MarginalGenerator-14"><span class="linenos">14</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="MarginalGenerator-15"><a href="#MarginalGenerator-15"><span class="linenos">15</span></a>
 </span><span id="MarginalGenerator-16"><a href="#MarginalGenerator-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="MarginalGenerator-17"><a href="#MarginalGenerator-17"><span class="linenos">17</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="MarginalGenerator-18"><a href="#MarginalGenerator-18"><span class="linenos">18</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">MarginalSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-</span><span id="MarginalGenerator-19"><a href="#MarginalGenerator-19"><span class="linenos">19</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
-</span><span id="MarginalGenerator-20"><a href="#MarginalGenerator-20"><span class="linenos">20</span></a>
-</span><span id="MarginalGenerator-21"><a href="#MarginalGenerator-21"><span class="linenos">21</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="MarginalGenerator-22"><a href="#MarginalGenerator-22"><span class="linenos">22</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
-</span><span id="MarginalGenerator-23"><a href="#MarginalGenerator-23"><span class="linenos">23</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
-</span><span id="MarginalGenerator-24"><a href="#MarginalGenerator-24"><span class="linenos">24</span></a>
-</span><span id="MarginalGenerator-25"><a href="#MarginalGenerator-25"><span class="linenos">25</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-</span><span id="MarginalGenerator-26"><a href="#MarginalGenerator-26"><span class="linenos">26</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the marginal distribution.&quot;&quot;&quot;</span>
-</span><span id="MarginalGenerator-27"><a href="#MarginalGenerator-27"><span class="linenos">27</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
+</span><span id="MarginalGenerator-17"><a href="#MarginalGenerator-17"><span class="linenos">17</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the generator.</span>
+</span><span id="MarginalGenerator-18"><a href="#MarginalGenerator-18"><span class="linenos">18</span></a>
+</span><span id="MarginalGenerator-19"><a href="#MarginalGenerator-19"><span class="linenos">19</span></a><span class="sd">        Args:</span>
+</span><span id="MarginalGenerator-20"><a href="#MarginalGenerator-20"><span class="linenos">20</span></a><span class="sd">            epsilon: privacy budget for differential privacy.</span>
+</span><span id="MarginalGenerator-21"><a href="#MarginalGenerator-21"><span class="linenos">21</span></a><span class="sd">            verbose: Verbosity level.</span>
+</span><span id="MarginalGenerator-22"><a href="#MarginalGenerator-22"><span class="linenos">22</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MarginalGenerator-23"><a href="#MarginalGenerator-23"><span class="linenos">23</span></a>
+</span><span id="MarginalGenerator-24"><a href="#MarginalGenerator-24"><span class="linenos">24</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="MarginalGenerator-25"><a href="#MarginalGenerator-25"><span class="linenos">25</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">MarginalSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+</span><span id="MarginalGenerator-26"><a href="#MarginalGenerator-26"><span class="linenos">26</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
+</span><span id="MarginalGenerator-27"><a href="#MarginalGenerator-27"><span class="linenos">27</span></a>
+</span><span id="MarginalGenerator-28"><a href="#MarginalGenerator-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="MarginalGenerator-29"><a href="#MarginalGenerator-29"><span class="linenos">29</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
+</span><span id="MarginalGenerator-30"><a href="#MarginalGenerator-30"><span class="linenos">30</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
+</span><span id="MarginalGenerator-31"><a href="#MarginalGenerator-31"><span class="linenos">31</span></a>
+</span><span id="MarginalGenerator-32"><a href="#MarginalGenerator-32"><span class="linenos">32</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="MarginalGenerator-33"><a href="#MarginalGenerator-33"><span class="linenos">33</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the marginal distribution.&quot;&quot;&quot;</span>
+</span><span id="MarginalGenerator-34"><a href="#MarginalGenerator-34"><span class="linenos">34</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -151,13 +165,29 @@
     </div>
     <a class="headerlink" href="#MarginalGenerator.__init__"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="MarginalGenerator.__init__-16"><a href="#MarginalGenerator.__init__-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="MarginalGenerator.__init__-17"><a href="#MarginalGenerator.__init__-17"><span class="linenos">17</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="MarginalGenerator.__init__-18"><a href="#MarginalGenerator.__init__-18"><span class="linenos">18</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">MarginalSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-</span><span id="MarginalGenerator.__init__-19"><a href="#MarginalGenerator.__init__-19"><span class="linenos">19</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
+</span><span id="MarginalGenerator.__init__-17"><a href="#MarginalGenerator.__init__-17"><span class="linenos">17</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the generator.</span>
+</span><span id="MarginalGenerator.__init__-18"><a href="#MarginalGenerator.__init__-18"><span class="linenos">18</span></a>
+</span><span id="MarginalGenerator.__init__-19"><a href="#MarginalGenerator.__init__-19"><span class="linenos">19</span></a><span class="sd">        Args:</span>
+</span><span id="MarginalGenerator.__init__-20"><a href="#MarginalGenerator.__init__-20"><span class="linenos">20</span></a><span class="sd">            epsilon: privacy budget for differential privacy.</span>
+</span><span id="MarginalGenerator.__init__-21"><a href="#MarginalGenerator.__init__-21"><span class="linenos">21</span></a><span class="sd">            verbose: Verbosity level.</span>
+</span><span id="MarginalGenerator.__init__-22"><a href="#MarginalGenerator.__init__-22"><span class="linenos">22</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MarginalGenerator.__init__-23"><a href="#MarginalGenerator.__init__-23"><span class="linenos">23</span></a>
+</span><span id="MarginalGenerator.__init__-24"><a href="#MarginalGenerator.__init__-24"><span class="linenos">24</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="MarginalGenerator.__init__-25"><a href="#MarginalGenerator.__init__-25"><span class="linenos">25</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">MarginalSynthesizer</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+</span><span id="MarginalGenerator.__init__-26"><a href="#MarginalGenerator.__init__-26"><span class="linenos">26</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
 </span></pre></div>
 
 
-    
+            <div class="docstring"><p>Initialize the generator.</p>
+
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>epsilon:</strong>  privacy budget for differential privacy.</li>
+<li><strong>verbose:</strong>  Verbosity level.</li>
+</ul>
+</div>
+
 
                             </div>
                             <div id="MarginalGenerator.model" class="classattr">
@@ -193,9 +223,9 @@
 
     </div>
     <a class="headerlink" href="#MarginalGenerator.fit"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="MarginalGenerator.fit-21"><a href="#MarginalGenerator.fit-21"><span class="linenos">21</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="MarginalGenerator.fit-22"><a href="#MarginalGenerator.fit-22"><span class="linenos">22</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
-</span><span id="MarginalGenerator.fit-23"><a href="#MarginalGenerator.fit-23"><span class="linenos">23</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MarginalGenerator.fit-28"><a href="#MarginalGenerator.fit-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_real</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="MarginalGenerator.fit-29"><a href="#MarginalGenerator.fit-29"><span class="linenos">29</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the model to the real data.&quot;&quot;&quot;</span>
+</span><span id="MarginalGenerator.fit-30"><a href="#MarginalGenerator.fit-30"><span class="linenos">30</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_real</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -215,9 +245,9 @@
 
     </div>
     <a class="headerlink" href="#MarginalGenerator.generate"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="MarginalGenerator.generate-25"><a href="#MarginalGenerator.generate-25"><span class="linenos">25</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-</span><span id="MarginalGenerator.generate-26"><a href="#MarginalGenerator.generate-26"><span class="linenos">26</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the marginal distribution.&quot;&quot;&quot;</span>
-</span><span id="MarginalGenerator.generate-27"><a href="#MarginalGenerator.generate-27"><span class="linenos">27</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MarginalGenerator.generate-32"><a href="#MarginalGenerator.generate-32"><span class="linenos">32</span></a>    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_records</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="MarginalGenerator.generate-33"><a href="#MarginalGenerator.generate-33"><span class="linenos">33</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate records based on the marginal distribution.&quot;&quot;&quot;</span>
+</span><span id="MarginalGenerator.generate-34"><a href="#MarginalGenerator.generate-34"><span class="linenos">34</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_records</span><span class="p">)</span>
 </span></pre></div>
 
 

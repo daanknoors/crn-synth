@@ -242,18 +242,24 @@
 
             <div class="docstring"><p>Benchmark multiple synthetic data generators.</p>
 
-<p>Args:
-    data_real (pd.DataFrame): Real data to synthesize.
-    data_holdout (pd.DataFrame): Holdout data for reviewer.
-    generators (list): List of generators to benchmark.
-    path_out (Path): Output path to save synthetic data and generators.
-    reviewer (SyntheticDataReview): Reviewer to evaluate synthetic data.
-    n_records (int): Number of records to generate.
-    fname_param (str): Parameter to include in filename if present in generator.
-    verbose (int): Verbosity level.</p>
+<h6 id="arguments">Arguments:</h6>
 
-<p>Returns:
-    pd.DataFrame: Scores from reviewer.</p>
+<ul>
+<li><strong>data_real (pd.DataFrame):</strong>  Real data to synthesize.</li>
+<li><strong>data_holdout (pd.DataFrame):</strong>  Holdout data for reviewer.</li>
+<li><strong>generators (list):</strong>  List of generators to benchmark.</li>
+<li><strong>path_out (Path):</strong>  Output path to save synthetic data and generators.</li>
+<li><strong>reviewer (SyntheticDataReview):</strong>  Reviewer to evaluate synthetic data.</li>
+<li><strong>n_records (int):</strong>  Number of records to generate.</li>
+<li><strong>fname_param (str):</strong>  Parameter to include in filename if present in generator.</li>
+<li><strong>verbose (int):</strong>  Verbosity level.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>pd.DataFrame: Scores from reviewer.</p>
+</blockquote>
 </div>
 
 

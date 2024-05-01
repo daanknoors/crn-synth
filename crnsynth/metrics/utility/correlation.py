@@ -12,7 +12,14 @@ class FeatureCorrelation(BaseMetric):
     """Compute mean pair-wise feature correlations between real and synthetic data."""
 
     def __init__(self, encoder=None, numerical_columns=None, **kwargs):
-        super().__init__(encoder, **kwargs)
+        """
+        Initialize the metric.
+
+        Args:
+            encoder: Encoder to use for encoding the data.
+            numerical_columns: List of numerical columns to consider for the metric.
+        """
+        super().__init__(encoder=encoder, **kwargs)
         self.numerical_columns = numerical_columns
 
     @staticmethod

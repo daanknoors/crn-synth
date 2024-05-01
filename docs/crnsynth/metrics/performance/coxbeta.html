@@ -165,37 +165,45 @@
 </span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="n">encoder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
 </span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">encoder</span><span class="o">=</span><span class="n">encoder</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span> <span class="o">=</span> <span class="n">clip_value</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span> <span class="o">=</span> <span class="n">target_column</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span> <span class="o">=</span> <span class="n">duration_column</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span> <span class="o">=</span> <span class="n">event_column</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>    <span class="k">def</span> <span class="nf">direction</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="k">return</span> <span class="s2">&quot;minimize&quot;</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>    <span class="k">def</span> <span class="nf">type</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="k">return</span> <span class="s2">&quot;performance&quot;</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="sd">        Args:</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="sd">            clip_value: Clip value for propensity weights.</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="sd">            target_column: Target column name.</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="sd">            duration_column: Duration column name.</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="sd">            event_column: Event column name.</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">            encoder: Encoder to use for encoding the data.</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">encoder</span><span class="o">=</span><span class="n">encoder</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span> <span class="o">=</span> <span class="n">clip_value</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span> <span class="o">=</span> <span class="n">target_column</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span> <span class="o">=</span> <span class="n">duration_column</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span> <span class="o">=</span> <span class="n">event_column</span>
 </span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">data_synth</span><span class="p">,</span> <span class="n">data_holdout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>        <span class="n">feature_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="nb">set</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">])</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="p">)</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>        <span class="n">score</span> <span class="o">=</span> <span class="n">cox_beta_score</span><span class="p">(</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="n">data_hybrid</span><span class="o">=</span><span class="n">data_synth</span><span class="p">,</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="n">data_real</span><span class="o">=</span><span class="n">data_train</span><span class="p">,</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>            <span class="n">target_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="n">duration_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="n">clip_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span><span class="p">,</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="n">event_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">,</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>        <span class="c1"># minimize absolute difference</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">score</span><span class="p">)}</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>    <span class="k">def</span> <span class="nf">direction</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="k">return</span> <span class="s2">&quot;minimize&quot;</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>    <span class="k">def</span> <span class="nf">type</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="k">return</span> <span class="s2">&quot;performance&quot;</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">data_synth</span><span class="p">,</span> <span class="n">data_holdout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">feature_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>            <span class="nb">set</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">])</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="p">)</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="n">score</span> <span class="o">=</span> <span class="n">cox_beta_score</span><span class="p">(</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>            <span class="n">data_hybrid</span><span class="o">=</span><span class="n">data_synth</span><span class="p">,</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>            <span class="n">data_real</span><span class="o">=</span><span class="n">data_train</span><span class="p">,</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>            <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>            <span class="n">target_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>            <span class="n">duration_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>            <span class="n">clip_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span><span class="p">,</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>            <span class="n">event_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">,</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>        <span class="p">)</span>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>        <span class="c1"># minimize absolute difference</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">score</span><span class="p">)}</span>
 </span></pre></div>
 
 
@@ -278,16 +286,23 @@ similarity.</p>
 <p>Assumes you are working with an augmented dataset, where a part of the original real dataset is replaced with
 synthetic records. For example, creating a synthetic control arm for a clinical trial.</p>
 
-<p>Args:
-    data_hybrid: Pre-processed hybrid data (real + synthetic).
-    data_real: Pre-processed real data (full real data).
-    feature_columns: Covariate names.
-    target_column: Test column name (eg treatment).
-    duration_column: Time to event column for Cox model.
-    event_column: Optional event indicator column for Cox model.
-    clip_value: Clip value for propensity weights.
-Returns:
-    Score value.</p>
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>data_hybrid:</strong>  Pre-processed hybrid data (real + synthetic).</li>
+<li><strong>data_real:</strong>  Pre-processed real data (full real data).</li>
+<li><strong>feature_columns:</strong>  Covariate names.</li>
+<li><strong>target_column:</strong>  Test column name (eg treatment).</li>
+<li><strong>duration_column:</strong>  Time to event column for Cox model.</li>
+<li><strong>event_column:</strong>  Optional event indicator column for Cox model.</li>
+<li><strong>clip_value:</strong>  Clip value for propensity weights.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Score value.</p>
+</blockquote>
 </div>
 
 
@@ -315,37 +330,45 @@ Returns:
 </span><span id="CoxBetaScore-80"><a href="#CoxBetaScore-80"><span class="linenos"> 80</span></a>        <span class="n">encoder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="CoxBetaScore-81"><a href="#CoxBetaScore-81"><span class="linenos"> 81</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
 </span><span id="CoxBetaScore-82"><a href="#CoxBetaScore-82"><span class="linenos"> 82</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="CoxBetaScore-83"><a href="#CoxBetaScore-83"><span class="linenos"> 83</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">encoder</span><span class="o">=</span><span class="n">encoder</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="CoxBetaScore-84"><a href="#CoxBetaScore-84"><span class="linenos"> 84</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span> <span class="o">=</span> <span class="n">clip_value</span>
-</span><span id="CoxBetaScore-85"><a href="#CoxBetaScore-85"><span class="linenos"> 85</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span> <span class="o">=</span> <span class="n">target_column</span>
-</span><span id="CoxBetaScore-86"><a href="#CoxBetaScore-86"><span class="linenos"> 86</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span> <span class="o">=</span> <span class="n">duration_column</span>
-</span><span id="CoxBetaScore-87"><a href="#CoxBetaScore-87"><span class="linenos"> 87</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span> <span class="o">=</span> <span class="n">event_column</span>
-</span><span id="CoxBetaScore-88"><a href="#CoxBetaScore-88"><span class="linenos"> 88</span></a>
-</span><span id="CoxBetaScore-89"><a href="#CoxBetaScore-89"><span class="linenos"> 89</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="CoxBetaScore-90"><a href="#CoxBetaScore-90"><span class="linenos"> 90</span></a>    <span class="k">def</span> <span class="nf">direction</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="CoxBetaScore-91"><a href="#CoxBetaScore-91"><span class="linenos"> 91</span></a>        <span class="k">return</span> <span class="s2">&quot;minimize&quot;</span>
-</span><span id="CoxBetaScore-92"><a href="#CoxBetaScore-92"><span class="linenos"> 92</span></a>
-</span><span id="CoxBetaScore-93"><a href="#CoxBetaScore-93"><span class="linenos"> 93</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="CoxBetaScore-94"><a href="#CoxBetaScore-94"><span class="linenos"> 94</span></a>    <span class="k">def</span> <span class="nf">type</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="CoxBetaScore-95"><a href="#CoxBetaScore-95"><span class="linenos"> 95</span></a>        <span class="k">return</span> <span class="s2">&quot;performance&quot;</span>
+</span><span id="CoxBetaScore-83"><a href="#CoxBetaScore-83"><span class="linenos"> 83</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CoxBetaScore-84"><a href="#CoxBetaScore-84"><span class="linenos"> 84</span></a><span class="sd">        Args:</span>
+</span><span id="CoxBetaScore-85"><a href="#CoxBetaScore-85"><span class="linenos"> 85</span></a><span class="sd">            clip_value: Clip value for propensity weights.</span>
+</span><span id="CoxBetaScore-86"><a href="#CoxBetaScore-86"><span class="linenos"> 86</span></a><span class="sd">            target_column: Target column name.</span>
+</span><span id="CoxBetaScore-87"><a href="#CoxBetaScore-87"><span class="linenos"> 87</span></a><span class="sd">            duration_column: Duration column name.</span>
+</span><span id="CoxBetaScore-88"><a href="#CoxBetaScore-88"><span class="linenos"> 88</span></a><span class="sd">            event_column: Event column name.</span>
+</span><span id="CoxBetaScore-89"><a href="#CoxBetaScore-89"><span class="linenos"> 89</span></a><span class="sd">            encoder: Encoder to use for encoding the data.</span>
+</span><span id="CoxBetaScore-90"><a href="#CoxBetaScore-90"><span class="linenos"> 90</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CoxBetaScore-91"><a href="#CoxBetaScore-91"><span class="linenos"> 91</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">encoder</span><span class="o">=</span><span class="n">encoder</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="CoxBetaScore-92"><a href="#CoxBetaScore-92"><span class="linenos"> 92</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span> <span class="o">=</span> <span class="n">clip_value</span>
+</span><span id="CoxBetaScore-93"><a href="#CoxBetaScore-93"><span class="linenos"> 93</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span> <span class="o">=</span> <span class="n">target_column</span>
+</span><span id="CoxBetaScore-94"><a href="#CoxBetaScore-94"><span class="linenos"> 94</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span> <span class="o">=</span> <span class="n">duration_column</span>
+</span><span id="CoxBetaScore-95"><a href="#CoxBetaScore-95"><span class="linenos"> 95</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span> <span class="o">=</span> <span class="n">event_column</span>
 </span><span id="CoxBetaScore-96"><a href="#CoxBetaScore-96"><span class="linenos"> 96</span></a>
-</span><span id="CoxBetaScore-97"><a href="#CoxBetaScore-97"><span class="linenos"> 97</span></a>    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">data_synth</span><span class="p">,</span> <span class="n">data_holdout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="CoxBetaScore-98"><a href="#CoxBetaScore-98"><span class="linenos"> 98</span></a>        <span class="n">feature_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
-</span><span id="CoxBetaScore-99"><a href="#CoxBetaScore-99"><span class="linenos"> 99</span></a>            <span class="nb">set</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-</span><span id="CoxBetaScore-100"><a href="#CoxBetaScore-100"><span class="linenos">100</span></a>            <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">])</span>
-</span><span id="CoxBetaScore-101"><a href="#CoxBetaScore-101"><span class="linenos">101</span></a>        <span class="p">)</span>
-</span><span id="CoxBetaScore-102"><a href="#CoxBetaScore-102"><span class="linenos">102</span></a>        <span class="n">score</span> <span class="o">=</span> <span class="n">cox_beta_score</span><span class="p">(</span>
-</span><span id="CoxBetaScore-103"><a href="#CoxBetaScore-103"><span class="linenos">103</span></a>            <span class="n">data_hybrid</span><span class="o">=</span><span class="n">data_synth</span><span class="p">,</span>
-</span><span id="CoxBetaScore-104"><a href="#CoxBetaScore-104"><span class="linenos">104</span></a>            <span class="n">data_real</span><span class="o">=</span><span class="n">data_train</span><span class="p">,</span>
-</span><span id="CoxBetaScore-105"><a href="#CoxBetaScore-105"><span class="linenos">105</span></a>            <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
-</span><span id="CoxBetaScore-106"><a href="#CoxBetaScore-106"><span class="linenos">106</span></a>            <span class="n">target_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span>
-</span><span id="CoxBetaScore-107"><a href="#CoxBetaScore-107"><span class="linenos">107</span></a>            <span class="n">duration_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span>
-</span><span id="CoxBetaScore-108"><a href="#CoxBetaScore-108"><span class="linenos">108</span></a>            <span class="n">clip_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span><span class="p">,</span>
-</span><span id="CoxBetaScore-109"><a href="#CoxBetaScore-109"><span class="linenos">109</span></a>            <span class="n">event_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">,</span>
-</span><span id="CoxBetaScore-110"><a href="#CoxBetaScore-110"><span class="linenos">110</span></a>        <span class="p">)</span>
-</span><span id="CoxBetaScore-111"><a href="#CoxBetaScore-111"><span class="linenos">111</span></a>
-</span><span id="CoxBetaScore-112"><a href="#CoxBetaScore-112"><span class="linenos">112</span></a>        <span class="c1"># minimize absolute difference</span>
-</span><span id="CoxBetaScore-113"><a href="#CoxBetaScore-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">score</span><span class="p">)}</span>
+</span><span id="CoxBetaScore-97"><a href="#CoxBetaScore-97"><span class="linenos"> 97</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="CoxBetaScore-98"><a href="#CoxBetaScore-98"><span class="linenos"> 98</span></a>    <span class="k">def</span> <span class="nf">direction</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="CoxBetaScore-99"><a href="#CoxBetaScore-99"><span class="linenos"> 99</span></a>        <span class="k">return</span> <span class="s2">&quot;minimize&quot;</span>
+</span><span id="CoxBetaScore-100"><a href="#CoxBetaScore-100"><span class="linenos">100</span></a>
+</span><span id="CoxBetaScore-101"><a href="#CoxBetaScore-101"><span class="linenos">101</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="CoxBetaScore-102"><a href="#CoxBetaScore-102"><span class="linenos">102</span></a>    <span class="k">def</span> <span class="nf">type</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="CoxBetaScore-103"><a href="#CoxBetaScore-103"><span class="linenos">103</span></a>        <span class="k">return</span> <span class="s2">&quot;performance&quot;</span>
+</span><span id="CoxBetaScore-104"><a href="#CoxBetaScore-104"><span class="linenos">104</span></a>
+</span><span id="CoxBetaScore-105"><a href="#CoxBetaScore-105"><span class="linenos">105</span></a>    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">data_synth</span><span class="p">,</span> <span class="n">data_holdout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="CoxBetaScore-106"><a href="#CoxBetaScore-106"><span class="linenos">106</span></a>        <span class="n">feature_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+</span><span id="CoxBetaScore-107"><a href="#CoxBetaScore-107"><span class="linenos">107</span></a>            <span class="nb">set</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</span><span id="CoxBetaScore-108"><a href="#CoxBetaScore-108"><span class="linenos">108</span></a>            <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">])</span>
+</span><span id="CoxBetaScore-109"><a href="#CoxBetaScore-109"><span class="linenos">109</span></a>        <span class="p">)</span>
+</span><span id="CoxBetaScore-110"><a href="#CoxBetaScore-110"><span class="linenos">110</span></a>        <span class="n">score</span> <span class="o">=</span> <span class="n">cox_beta_score</span><span class="p">(</span>
+</span><span id="CoxBetaScore-111"><a href="#CoxBetaScore-111"><span class="linenos">111</span></a>            <span class="n">data_hybrid</span><span class="o">=</span><span class="n">data_synth</span><span class="p">,</span>
+</span><span id="CoxBetaScore-112"><a href="#CoxBetaScore-112"><span class="linenos">112</span></a>            <span class="n">data_real</span><span class="o">=</span><span class="n">data_train</span><span class="p">,</span>
+</span><span id="CoxBetaScore-113"><a href="#CoxBetaScore-113"><span class="linenos">113</span></a>            <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
+</span><span id="CoxBetaScore-114"><a href="#CoxBetaScore-114"><span class="linenos">114</span></a>            <span class="n">target_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span>
+</span><span id="CoxBetaScore-115"><a href="#CoxBetaScore-115"><span class="linenos">115</span></a>            <span class="n">duration_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span>
+</span><span id="CoxBetaScore-116"><a href="#CoxBetaScore-116"><span class="linenos">116</span></a>            <span class="n">clip_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span><span class="p">,</span>
+</span><span id="CoxBetaScore-117"><a href="#CoxBetaScore-117"><span class="linenos">117</span></a>            <span class="n">event_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">,</span>
+</span><span id="CoxBetaScore-118"><a href="#CoxBetaScore-118"><span class="linenos">118</span></a>        <span class="p">)</span>
+</span><span id="CoxBetaScore-119"><a href="#CoxBetaScore-119"><span class="linenos">119</span></a>
+</span><span id="CoxBetaScore-120"><a href="#CoxBetaScore-120"><span class="linenos">120</span></a>        <span class="c1"># minimize absolute difference</span>
+</span><span id="CoxBetaScore-121"><a href="#CoxBetaScore-121"><span class="linenos">121</span></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">score</span><span class="p">)}</span>
 </span></pre></div>
 
 
@@ -372,15 +395,31 @@ Returns:
 </span><span id="CoxBetaScore.__init__-80"><a href="#CoxBetaScore.__init__-80"><span class="linenos">80</span></a>        <span class="n">encoder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 </span><span id="CoxBetaScore.__init__-81"><a href="#CoxBetaScore.__init__-81"><span class="linenos">81</span></a>        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
 </span><span id="CoxBetaScore.__init__-82"><a href="#CoxBetaScore.__init__-82"><span class="linenos">82</span></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="CoxBetaScore.__init__-83"><a href="#CoxBetaScore.__init__-83"><span class="linenos">83</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">encoder</span><span class="o">=</span><span class="n">encoder</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="CoxBetaScore.__init__-84"><a href="#CoxBetaScore.__init__-84"><span class="linenos">84</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span> <span class="o">=</span> <span class="n">clip_value</span>
-</span><span id="CoxBetaScore.__init__-85"><a href="#CoxBetaScore.__init__-85"><span class="linenos">85</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span> <span class="o">=</span> <span class="n">target_column</span>
-</span><span id="CoxBetaScore.__init__-86"><a href="#CoxBetaScore.__init__-86"><span class="linenos">86</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span> <span class="o">=</span> <span class="n">duration_column</span>
-</span><span id="CoxBetaScore.__init__-87"><a href="#CoxBetaScore.__init__-87"><span class="linenos">87</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span> <span class="o">=</span> <span class="n">event_column</span>
+</span><span id="CoxBetaScore.__init__-83"><a href="#CoxBetaScore.__init__-83"><span class="linenos">83</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="CoxBetaScore.__init__-84"><a href="#CoxBetaScore.__init__-84"><span class="linenos">84</span></a><span class="sd">        Args:</span>
+</span><span id="CoxBetaScore.__init__-85"><a href="#CoxBetaScore.__init__-85"><span class="linenos">85</span></a><span class="sd">            clip_value: Clip value for propensity weights.</span>
+</span><span id="CoxBetaScore.__init__-86"><a href="#CoxBetaScore.__init__-86"><span class="linenos">86</span></a><span class="sd">            target_column: Target column name.</span>
+</span><span id="CoxBetaScore.__init__-87"><a href="#CoxBetaScore.__init__-87"><span class="linenos">87</span></a><span class="sd">            duration_column: Duration column name.</span>
+</span><span id="CoxBetaScore.__init__-88"><a href="#CoxBetaScore.__init__-88"><span class="linenos">88</span></a><span class="sd">            event_column: Event column name.</span>
+</span><span id="CoxBetaScore.__init__-89"><a href="#CoxBetaScore.__init__-89"><span class="linenos">89</span></a><span class="sd">            encoder: Encoder to use for encoding the data.</span>
+</span><span id="CoxBetaScore.__init__-90"><a href="#CoxBetaScore.__init__-90"><span class="linenos">90</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="CoxBetaScore.__init__-91"><a href="#CoxBetaScore.__init__-91"><span class="linenos">91</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">encoder</span><span class="o">=</span><span class="n">encoder</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="CoxBetaScore.__init__-92"><a href="#CoxBetaScore.__init__-92"><span class="linenos">92</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span> <span class="o">=</span> <span class="n">clip_value</span>
+</span><span id="CoxBetaScore.__init__-93"><a href="#CoxBetaScore.__init__-93"><span class="linenos">93</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span> <span class="o">=</span> <span class="n">target_column</span>
+</span><span id="CoxBetaScore.__init__-94"><a href="#CoxBetaScore.__init__-94"><span class="linenos">94</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span> <span class="o">=</span> <span class="n">duration_column</span>
+</span><span id="CoxBetaScore.__init__-95"><a href="#CoxBetaScore.__init__-95"><span class="linenos">95</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span> <span class="o">=</span> <span class="n">event_column</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Initialize the metric.</p>
+            <div class="docstring"><h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>clip_value:</strong>  Clip value for propensity weights.</li>
+<li><strong>target_column:</strong>  Target column name.</li>
+<li><strong>duration_column:</strong>  Duration column name.</li>
+<li><strong>event_column:</strong>  Event column name.</li>
+<li><strong>encoder:</strong>  Encoder to use for encoding the data.</li>
+</ul>
 </div>
 
 
@@ -441,9 +480,9 @@ Returns:
 
     </div>
     <a class="headerlink" href="#CoxBetaScore.direction"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CoxBetaScore.direction-89"><a href="#CoxBetaScore.direction-89"><span class="linenos">89</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="CoxBetaScore.direction-90"><a href="#CoxBetaScore.direction-90"><span class="linenos">90</span></a>    <span class="k">def</span> <span class="nf">direction</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="CoxBetaScore.direction-91"><a href="#CoxBetaScore.direction-91"><span class="linenos">91</span></a>        <span class="k">return</span> <span class="s2">&quot;minimize&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CoxBetaScore.direction-97"><a href="#CoxBetaScore.direction-97"><span class="linenos">97</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="CoxBetaScore.direction-98"><a href="#CoxBetaScore.direction-98"><span class="linenos">98</span></a>    <span class="k">def</span> <span class="nf">direction</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="CoxBetaScore.direction-99"><a href="#CoxBetaScore.direction-99"><span class="linenos">99</span></a>        <span class="k">return</span> <span class="s2">&quot;minimize&quot;</span>
 </span></pre></div>
 
 
@@ -464,9 +503,9 @@ Returns:
 
     </div>
     <a class="headerlink" href="#CoxBetaScore.type"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CoxBetaScore.type-93"><a href="#CoxBetaScore.type-93"><span class="linenos">93</span></a>    <span class="nd">@staticmethod</span>
-</span><span id="CoxBetaScore.type-94"><a href="#CoxBetaScore.type-94"><span class="linenos">94</span></a>    <span class="k">def</span> <span class="nf">type</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="CoxBetaScore.type-95"><a href="#CoxBetaScore.type-95"><span class="linenos">95</span></a>        <span class="k">return</span> <span class="s2">&quot;performance&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CoxBetaScore.type-101"><a href="#CoxBetaScore.type-101"><span class="linenos">101</span></a>    <span class="nd">@staticmethod</span>
+</span><span id="CoxBetaScore.type-102"><a href="#CoxBetaScore.type-102"><span class="linenos">102</span></a>    <span class="k">def</span> <span class="nf">type</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="CoxBetaScore.type-103"><a href="#CoxBetaScore.type-103"><span class="linenos">103</span></a>        <span class="k">return</span> <span class="s2">&quot;performance&quot;</span>
 </span></pre></div>
 
 
@@ -486,23 +525,23 @@ Returns:
 
     </div>
     <a class="headerlink" href="#CoxBetaScore.compute"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="CoxBetaScore.compute-97"><a href="#CoxBetaScore.compute-97"><span class="linenos"> 97</span></a>    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">data_synth</span><span class="p">,</span> <span class="n">data_holdout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-</span><span id="CoxBetaScore.compute-98"><a href="#CoxBetaScore.compute-98"><span class="linenos"> 98</span></a>        <span class="n">feature_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
-</span><span id="CoxBetaScore.compute-99"><a href="#CoxBetaScore.compute-99"><span class="linenos"> 99</span></a>            <span class="nb">set</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-</span><span id="CoxBetaScore.compute-100"><a href="#CoxBetaScore.compute-100"><span class="linenos">100</span></a>            <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">])</span>
-</span><span id="CoxBetaScore.compute-101"><a href="#CoxBetaScore.compute-101"><span class="linenos">101</span></a>        <span class="p">)</span>
-</span><span id="CoxBetaScore.compute-102"><a href="#CoxBetaScore.compute-102"><span class="linenos">102</span></a>        <span class="n">score</span> <span class="o">=</span> <span class="n">cox_beta_score</span><span class="p">(</span>
-</span><span id="CoxBetaScore.compute-103"><a href="#CoxBetaScore.compute-103"><span class="linenos">103</span></a>            <span class="n">data_hybrid</span><span class="o">=</span><span class="n">data_synth</span><span class="p">,</span>
-</span><span id="CoxBetaScore.compute-104"><a href="#CoxBetaScore.compute-104"><span class="linenos">104</span></a>            <span class="n">data_real</span><span class="o">=</span><span class="n">data_train</span><span class="p">,</span>
-</span><span id="CoxBetaScore.compute-105"><a href="#CoxBetaScore.compute-105"><span class="linenos">105</span></a>            <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
-</span><span id="CoxBetaScore.compute-106"><a href="#CoxBetaScore.compute-106"><span class="linenos">106</span></a>            <span class="n">target_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span>
-</span><span id="CoxBetaScore.compute-107"><a href="#CoxBetaScore.compute-107"><span class="linenos">107</span></a>            <span class="n">duration_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span>
-</span><span id="CoxBetaScore.compute-108"><a href="#CoxBetaScore.compute-108"><span class="linenos">108</span></a>            <span class="n">clip_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span><span class="p">,</span>
-</span><span id="CoxBetaScore.compute-109"><a href="#CoxBetaScore.compute-109"><span class="linenos">109</span></a>            <span class="n">event_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">,</span>
-</span><span id="CoxBetaScore.compute-110"><a href="#CoxBetaScore.compute-110"><span class="linenos">110</span></a>        <span class="p">)</span>
-</span><span id="CoxBetaScore.compute-111"><a href="#CoxBetaScore.compute-111"><span class="linenos">111</span></a>
-</span><span id="CoxBetaScore.compute-112"><a href="#CoxBetaScore.compute-112"><span class="linenos">112</span></a>        <span class="c1"># minimize absolute difference</span>
-</span><span id="CoxBetaScore.compute-113"><a href="#CoxBetaScore.compute-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">score</span><span class="p">)}</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="CoxBetaScore.compute-105"><a href="#CoxBetaScore.compute-105"><span class="linenos">105</span></a>    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">data_synth</span><span class="p">,</span> <span class="n">data_holdout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="CoxBetaScore.compute-106"><a href="#CoxBetaScore.compute-106"><span class="linenos">106</span></a>        <span class="n">feature_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+</span><span id="CoxBetaScore.compute-107"><a href="#CoxBetaScore.compute-107"><span class="linenos">107</span></a>            <span class="nb">set</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</span><span id="CoxBetaScore.compute-108"><a href="#CoxBetaScore.compute-108"><span class="linenos">108</span></a>            <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">])</span>
+</span><span id="CoxBetaScore.compute-109"><a href="#CoxBetaScore.compute-109"><span class="linenos">109</span></a>        <span class="p">)</span>
+</span><span id="CoxBetaScore.compute-110"><a href="#CoxBetaScore.compute-110"><span class="linenos">110</span></a>        <span class="n">score</span> <span class="o">=</span> <span class="n">cox_beta_score</span><span class="p">(</span>
+</span><span id="CoxBetaScore.compute-111"><a href="#CoxBetaScore.compute-111"><span class="linenos">111</span></a>            <span class="n">data_hybrid</span><span class="o">=</span><span class="n">data_synth</span><span class="p">,</span>
+</span><span id="CoxBetaScore.compute-112"><a href="#CoxBetaScore.compute-112"><span class="linenos">112</span></a>            <span class="n">data_real</span><span class="o">=</span><span class="n">data_train</span><span class="p">,</span>
+</span><span id="CoxBetaScore.compute-113"><a href="#CoxBetaScore.compute-113"><span class="linenos">113</span></a>            <span class="n">feature_columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">,</span>
+</span><span id="CoxBetaScore.compute-114"><a href="#CoxBetaScore.compute-114"><span class="linenos">114</span></a>            <span class="n">target_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target_column</span><span class="p">,</span>
+</span><span id="CoxBetaScore.compute-115"><a href="#CoxBetaScore.compute-115"><span class="linenos">115</span></a>            <span class="n">duration_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">duration_column</span><span class="p">,</span>
+</span><span id="CoxBetaScore.compute-116"><a href="#CoxBetaScore.compute-116"><span class="linenos">116</span></a>            <span class="n">clip_value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">clip_value</span><span class="p">,</span>
+</span><span id="CoxBetaScore.compute-117"><a href="#CoxBetaScore.compute-117"><span class="linenos">117</span></a>            <span class="n">event_column</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_column</span><span class="p">,</span>
+</span><span id="CoxBetaScore.compute-118"><a href="#CoxBetaScore.compute-118"><span class="linenos">118</span></a>        <span class="p">)</span>
+</span><span id="CoxBetaScore.compute-119"><a href="#CoxBetaScore.compute-119"><span class="linenos">119</span></a>
+</span><span id="CoxBetaScore.compute-120"><a href="#CoxBetaScore.compute-120"><span class="linenos">120</span></a>        <span class="c1"># minimize absolute difference</span>
+</span><span id="CoxBetaScore.compute-121"><a href="#CoxBetaScore.compute-121"><span class="linenos">121</span></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">score</span><span class="p">)}</span>
 </span></pre></div>
 
 

@@ -25,6 +25,13 @@ class CategoricalCAPScore(BaseMetric):
         random_state=None,
         **kwargs: Any
     ) -> None:
+        """
+        Args:
+            categorical_columns: List of columns to consider for the metric.
+            frac_sensitive: Fraction of sensitive columns to consider.
+            encoder: Encoder to use for encoding the data.
+            random_state: Random seed.
+        """
         super().__init__(encoder=encoder, **kwargs)
         self.categorical_columns = categorical_columns
         self.frac_sensitive = frac_sensitive

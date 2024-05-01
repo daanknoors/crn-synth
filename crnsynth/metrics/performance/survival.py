@@ -33,6 +33,12 @@ class MedianSurvivalScore(BaseMetric):
         self, duration_column, event_column, encoder=None, **kwargs: Any
     ) -> None:
         super().__init__(encoder=encoder, **kwargs)
+        """
+        Args:
+            duration_column: Column name for the duration of the event.
+            event_column: Column name for the event indicator.
+            encoder: Encoder to use for encoding the data.
+        """
         self.duration_column = duration_column
         self.event_column = event_column
 
@@ -114,6 +120,13 @@ class PredictedMedianSurvivalScore(BaseMetric):
         encoder=None,
         **kwargs: Any
     ) -> None:
+        """
+        Args:
+            feature_columns: List of feature columns to use for prediction.
+            duration_column: Column name for the duration of the event.
+            event_column: Column name for the event indicator.
+            encoder: Encoder to use for encoding the data.
+        """
         super().__init__(encoder=encoder, **kwargs)
         self.feature_columns = feature_columns
         self.duration_column = duration_column
@@ -177,6 +190,12 @@ class SurvivalCurvesDistanceScore(BaseMetric):
     def __init__(
         self, duration_column, event_column, encoder=None, **kwargs: Any
     ) -> None:
+        """
+        Args:
+            duration_column: Column name for the duration of the event.
+            event_column: Column name for the event indicator.
+            encoder: Encoder to use for encoding the data.
+        """
         super().__init__(encoder=encoder, **kwargs)
         self.duration_column = duration_column
         self.event_column = event_column

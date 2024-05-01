@@ -13,6 +13,13 @@ class MarginalGenerator(BaseGenerator):
     """
 
     def __init__(self, epsilon: float, verbose=1, **kwargs: Any) -> None:
+        """Initialize the generator.
+
+        Args:
+            epsilon: privacy budget for differential privacy.
+            verbose: Verbosity level.
+        """
+
         super().__init__()
         self.model = MarginalSynthesizer(epsilon=epsilon, verbose=verbose)
         self.epsilon = epsilon

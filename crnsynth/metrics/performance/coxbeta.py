@@ -79,6 +79,14 @@ class CoxBetaScore(BaseMetric):
         encoder=None,
         **kwargs: Any
     ) -> None:
+        """
+        Args:
+            clip_value: Clip value for propensity weights.
+            target_column: Target column name.
+            duration_column: Duration column name.
+            event_column: Event column name.
+            encoder: Encoder to use for encoding the data.
+        """
         super().__init__(encoder=encoder, **kwargs)
         self.clip_value = clip_value
         self.target_column = target_column

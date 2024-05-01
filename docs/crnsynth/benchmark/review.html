@@ -519,13 +519,16 @@
 </span></pre></div>
 
 
-            <div class="docstring"><p>Args:
-    metrics List[BaseMetric], Dict[str, BaseMetric]: List or Dict of metrics to run.
-    metric_kwargs (Dict[str, Any], optional): Dictionary of keyword arguments for the metrics. Defaults to None.
-    encoder (Any, optional): Use one type of encoding for all metrics. If None, use encoding method specified in
-                             each metric. Defaults to None.
-    n_jobs (int, optional): Number of jobs to run in parallel. Defaults to 1.
-    verbose (int, optional): Verbosity level. Defaults to 1.</p>
+            <div class="docstring"><h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>metrics List[BaseMetric], Dict[str, BaseMetric]:</strong>  List or Dict of metrics to run.</li>
+<li><strong>metric_kwargs (Dict[str, Any], optional):</strong>  Dictionary of keyword arguments for the metrics. Defaults to None.</li>
+<li><strong>encoder (Any, optional):</strong>  Use one type of encoding for all metrics. If None, use encoding method specified in
+each metric. Defaults to None.</li>
+<li><strong>n_jobs (int, optional):</strong>  Number of jobs to run in parallel. Defaults to 1.</li>
+<li><strong>verbose (int, optional):</strong>  Verbosity level. Defaults to 1.</li>
+</ul>
 </div>
 
 
@@ -643,13 +646,19 @@
 
             <div class="docstring"><p>Run all metrics on the synthetic data.</p>
 
-<p>Args:
-    data_train (pd.DataFrame): Training data.
-    data_synth (pd.DataFrame): Synthetic data.
-    data_holdout (Union[pd.DataFrame, None], optional): Holdout data for evaluation. Defaults to None.</p>
+<h6 id="arguments">Arguments:</h6>
 
-<p>Returns:
-    Dict: Dictionary of metric results.</p>
+<ul>
+<li><strong>data_train (pd.DataFrame):</strong>  Training data.</li>
+<li><strong>data_synth (pd.DataFrame):</strong>  Synthetic data.</li>
+<li><strong>data_holdout (Union[pd.DataFrame, None], optional):</strong>  Holdout data for evaluation. Defaults to None.</li>
+</ul>
+
+<h6 id="returns">Returns:</h6>
+
+<blockquote>
+  <p>Dict: Dictionary of metric results.</p>
+</blockquote>
 </div>
 
 

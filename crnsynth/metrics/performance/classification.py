@@ -19,6 +19,15 @@ class ClassifierComparison(BaseMetric):
         verbose=1,
         **kwargs: Any,
     ) -> None:
+        """
+        Args:
+            target_column: Target column name.
+            model: Model to use for training.
+            score_fn: Score function to use for evaluation.
+            encoder: Encoder to use for encoding the data.
+            random_state: Random seed.
+            verbose: Verbosity level.
+        """
         super().__init__(encoder, **kwargs)
         self.target_column = target_column
         self.model = model

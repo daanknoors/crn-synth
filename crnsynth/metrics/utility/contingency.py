@@ -14,6 +14,12 @@ class ContingencySimilarityScore(BaseMetric):
     converts it to a similarity score."""
 
     def __init__(self, encoder=None, categorical_columns=None, **kwargs):
+        """Initialize the metric.
+
+        Args:
+            encoder: Encoder to use for encoding the data.
+            categorical_columns: List of columns to consider for the metric.
+        """
         super().__init__(encoder, **kwargs)
         self.categorical_columns = categorical_columns
 

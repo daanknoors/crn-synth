@@ -23,6 +23,13 @@ class CategoricalKNNScore(BaseMetric):
         encoder=None,
         **kwargs: Any
     ) -> None:
+        """
+        Args:
+            categorical_columns: List of columns to consider for the metric.
+            frac_sensitive: Fraction of sensitive columns to consider.
+            random_state: Random seed.
+            encoder: Encoder to use for encoding the data.
+        """
         super().__init__(encoder=encoder, **kwargs)
         self.categorical_columns = categorical_columns
         self.frac_sensitive = frac_sensitive
