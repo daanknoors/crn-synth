@@ -39,7 +39,11 @@ class DefaultEncoder(ColumnTransformer):
 
         # assign transformers to ColumnTransformer
         self.transformers = [
-            ("cat", OneHotEncoder(drop="if_binary"), self.categorical_columns),
+            (
+                "cat",
+                OneHotEncoder(handle_unknown="ignore", drop="if_binary"),
+                self.categorical_columns,
+            ),
             ("num", StandardScaler(), self.numerical_columns),
         ]
         super().fit(data)
@@ -52,7 +56,7 @@ class DefaultEncoder(ColumnTransformer):
 def get_encoder(encoder: str):
     """Get an encoder by name"""
     encoders = {
-        "onehot": OneHotEncoder(drop="if_binary"),
+        "onehot": OneHotEncoder(handle_unknown="ignore", drop="if_binary"),
         "ordinal": OrdinalEncoder(
             handle_unknown="use_encoded_value", unknown_value=np.nan
         ),
