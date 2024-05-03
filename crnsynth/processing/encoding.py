@@ -4,6 +4,7 @@ from typing import Iterable, List, Union
 
 import numpy as np
 import pandas as pd
+from scipy.sparse import issparse
 from sklearn.compose import ColumnTransformer
 from sklearn.exceptions import NotFittedError
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler
@@ -65,11 +66,16 @@ def get_encoder(encoder: str):
 
 def convert_encoded_data_to_dataframe(data_enc, encoder, column_names=None):
     """Convert encoded data back to a dataframe"""
-    # Get the feature names
+    # get the feature names from the encoder
     new_column_names = encoder.get_feature_names_out(input_features=column_names)
 
-    # Remove 'remainder__' prefix (in case you used a ColumnTransformer with passthrough)
+    # remove 'remainder__' prefix (in case you used a ColumnTransformer with passthrough)
     new_column_names = [name.replace("remainder__", "") for name in new_column_names]
+
+    # check if the data is sparse and transform it to a dense array, so it can be converted to a DataFrame
+    if issparse(data_enc):
+        # convert the sparse data to a dense array
+        data_enc = data_enc.toarray()
 
     # convert the encoded data to a DataFrame
     df_enc = pd.DataFrame(
