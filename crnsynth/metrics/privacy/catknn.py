@@ -48,6 +48,7 @@ class CategoricalKNNScore(BaseMetric):
         data_train: pd.DataFrame,
         data_synth: pd.DataFrame,
         data_holdout: Optional[pd.DataFrame] = None,
+        **kwargs
     ) -> dict:
         self._check_params()
 

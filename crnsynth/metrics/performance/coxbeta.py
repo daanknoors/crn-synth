@@ -101,7 +101,7 @@ class CoxBetaScore(BaseMetric):
     def type() -> str:
         return "performance"
 
-    def compute(self, data_train, data_synth, data_holdout=None):
+    def compute(self, data_train, data_synth, data_holdout=None, **kwargs):
         feature_columns = list(
             set(data_train.columns)
             - set([self.duration_column, self.target_column, self.event_column])

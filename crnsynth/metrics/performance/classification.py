@@ -43,7 +43,7 @@ class ClassifierComparison(BaseMetric):
     def type() -> str:
         return "performance"
 
-    def compute(self, data_train, data_synth, data_holdout=None) -> Dict:
+    def compute(self, data_train, data_synth, data_holdout=None, **kwargs) -> Dict:
         self._check_args(data_train, data_synth, data_holdout)
 
         # encode data using encoder

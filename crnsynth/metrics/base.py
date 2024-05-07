@@ -33,6 +33,7 @@ class BaseMetric:
         data_train: pd.DataFrame,
         data_synth: pd.DataFrame,
         data_holdout: Optional[pd.DataFrame] = None,
+        **kwargs: Optional[dict],
     ) -> dict:
         """Compute the metric."""
         raise NotImplementedError("compute() method not implemented")
@@ -67,7 +68,7 @@ class BaseMetric:
         return data_train, data_synth, data_holdout
 
     def __str__(self):
-        return self.name()
+        return self.name
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.__dict__})"

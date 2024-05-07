@@ -1,36 +1,49 @@
+import numpy as np
 import pandas as pd
 import pytest
 from synthcity.metrics.eval_performance import PerformanceEvaluatorLinear
 from synthcity.metrics.eval_sanity import DataMismatchScore
 from synthcity.metrics.eval_statistical import JensenShannonDistance
 
-from crnsynth.metrics.wrappers import SynthcityMetricWrapper
+from crnsynth.integration.metrics import SynthcityMetricWrapper
 
 
 @pytest.fixture
 def data_train():
     return pd.DataFrame(
-        {"A": [1, 2, 3, 4], "B": ["a", "b", "c", "d"], "C": [0.1, 0.2, 0.3, 0.4]}
+        {
+            "A": np.random.choice(["a", "b", "c"], 100),
+            "B": np.random.rand(100),
+            "C": np.random.rand(100),
+        }
     )
 
 
 @pytest.fixture
 def data_synth():
     return pd.DataFrame(
-        {"A": [2, 2, 3, 4], "B": ["b", "b", "c", "d"], "C": [0.3, 0.2, 0.3, 0.4]}
+        {
+            "A": np.random.choice(["a", "b", "c"], 100),
+            "B": np.random.rand(100),
+            "C": np.random.rand(100),
+        }
     )
 
 
 @pytest.fixture
 def data_holdout():
     return pd.DataFrame(
-        {"A": [4, 3, 2, 1], "B": ["a", "b", "c", "e"], "C": [0.1, 0.2, 0.3, 0.5]}
+        {
+            "A": np.random.choice(["a", "b", "c"], 20),
+            "B": np.random.rand(20),
+            "C": np.random.rand(20),
+        }
     )
 
 
 def test_synthcity_metric_wrapper_jensenshannon(data_train, data_synth, data_holdout):
     metric = JensenShannonDistance()
-    wrapper = SynthcityMetricWrapper(metric, include_holdout=False, encoder="ordinal")
+    wrapper = SynthcityMetricWrapper(metric, encoder="ordinal")
     scores = wrapper.compute(data_train, data_synth, data_holdout)
     assert isinstance(scores, dict)
 
@@ -39,7 +52,9 @@ def test_synthcity_metric_wrapper_performanceevaluatorlinear(
     data_train, data_synth, data_holdout
 ):
     metric = PerformanceEvaluatorLinear()
-    wrapper = SynthcityMetricWrapper(metric, include_holdout=True, encoder="ordinal")
+    wrapper = SynthcityMetricWrapper(
+        metric, include_holdout=True, encoder="ordinal", target_column="A"
+    )
     scores = wrapper.compute(data_train, data_synth, data_holdout)
     assert isinstance(scores, dict)
 

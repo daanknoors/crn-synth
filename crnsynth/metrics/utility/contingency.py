@@ -31,12 +31,7 @@ class ContingencySimilarityScore(BaseMetric):
     def direction() -> str:
         return "maximize"
 
-    def compute(
-        self,
-        data_train,
-        data_synth,
-        data_holdout=None,
-    ) -> dict:
+    def compute(self, data_train, data_synth, data_holdout=None, **kwargs) -> dict:
         """Compute the metric."""
         assert (
             self.categorical_columns is not None

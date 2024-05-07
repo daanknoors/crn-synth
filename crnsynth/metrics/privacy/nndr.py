@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 
 import numpy as np
 import pandas as pd
@@ -83,7 +83,8 @@ class NearestNeighborDistanceRatio(BaseMetric):
         self,
         data_train: pd.DataFrame,
         data_synth: pd.DataFrame,
-        data_holdout: Union[pd.DataFrame, None] = None,
+        data_holdout: Optional[pd.DataFrame] = None,
+        **kwargs: Optional[Dict],
     ) -> Dict:
         if data_holdout is None:
             raise ValueError("Holdout data is required for computing this metric.")

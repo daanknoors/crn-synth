@@ -1,6 +1,6 @@
 """Encoding data for synthesis or metrics"""
 
-from typing import Iterable, List, Union
+from typing import Iterable, List, Optional, Union
 
 import numpy as np
 import pandas as pd
@@ -16,10 +16,14 @@ class DefaultEncoder(ColumnTransformer):
 
     def __init__(
         self,
-        categorical_columns: Union[Iterable, None] = None,
-        numerical_columns: Union[Iterable, None] = None,
+        categorical_columns: Optional[Iterable] = None,
+        numerical_columns: Optional[Iterable] = None,
     ):
-        """Initialize the encoder"""
+        """Initialize the encoder
+
+        Args:
+
+        """
         super().__init__(transformers=[], remainder="passthrough")
 
         self.categorical_columns = categorical_columns

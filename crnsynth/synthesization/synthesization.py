@@ -1,7 +1,7 @@
 """Functions to run synthesis pipeline on real data."""
 
 from pathlib import Path
-from typing import Union
+from typing import Optional
 
 import pandas as pd
 
@@ -12,7 +12,7 @@ from crnsynth.serialization.paths import create_output_dir
 def generate_synth_data(
     data_real: pd.DataFrame,
     generator: BaseGenerator,
-    n_records: Union[None, int],
+    n_records: Optional[int],
     verbose: int = 1,
 ) -> tuple[pd.DataFrame, BaseGenerator]:
     """Generate synthetic data using a generator."""

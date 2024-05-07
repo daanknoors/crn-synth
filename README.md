@@ -33,6 +33,7 @@ This library is structured in the following manner:
   - privacy/ - evaluating privacy risk of the synthetic data
   - similarity/ - computing the statistical similarity of the synthetic data 
 - generators/ - custom generators that can be used alongside third-party generators
+- integration/ - integrate third-party libraries for synthetic data generation and evaluation
 - process/ - process the original and synthetic data for synthesis and metrics
 - stats/ - compute statistics on the original and synthetic data
 - synthesization/ - generate synthetic data using generators and processing pipelines

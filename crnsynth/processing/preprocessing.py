@@ -1,7 +1,7 @@
 """Pre-processing functions for real data before synthesis"""
 
 from datetime import datetime
-from typing import List, Union
+from typing import List, Optional, Union
 
 import pandas as pd
 from matplotlib.dates import date2num
@@ -14,7 +14,7 @@ def split_train_holdout(
     data_real: pd.DataFrame,
     target_column=None,
     holdout_size: float = 0.2,
-    random_state: Union[None, int] = None,
+    random_state: Optional[int] = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Split data into training and holdout sets. Optionally stratify based on target column."""
     if holdout_size > 0:

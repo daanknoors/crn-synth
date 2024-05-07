@@ -55,6 +55,7 @@ class MedianSurvivalScore(BaseMetric):
         data_train: pd.DataFrame,
         data_synth: pd.DataFrame,
         data_holdout: Optional[pd.DataFrame] = None,
+        **kwargs
     ) -> dict:
         data_train, data_synth, data_holdout = self.encode(
             data_train=data_train,
@@ -145,6 +146,7 @@ class PredictedMedianSurvivalScore(BaseMetric):
         data_train: pd.DataFrame,
         data_synth: pd.DataFrame,
         data_holdout: Optional[pd.DataFrame] = None,
+        **kwargs
     ) -> dict:
         data_train, data_synth, data_holdout = self.encode(
             data_train=data_train,
@@ -213,6 +215,7 @@ class SurvivalCurvesDistanceScore(BaseMetric):
         data_train: pd.DataFrame,
         data_synth: pd.DataFrame,
         data_holdout: Optional[pd.DataFrame] = None,
+        **kwargs
     ) -> dict:
         data_train, data_synth, data_holdout = self.encode(
             data_train=data_train,

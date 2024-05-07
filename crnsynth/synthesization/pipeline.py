@@ -1,4 +1,4 @@
-from typing import Dict, List, Union
+from typing import Dict, List, Optional, Union
 
 import pandas as pd
 
@@ -12,14 +12,14 @@ from crnsynth.synthesization.synthesization import generate_synth_data
 def run_synth_pipeline(
     data_real: pd.DataFrame,
     generator: BaseGenerator,
-    preprocess_func: Union[None, callable] = None,
-    postprocess_func: Union[None, callable] = None,
-    generalizers: Union[List[BaseGeneralizationMech], None] = None,
+    preprocess_func: Optional[callable] = None,
+    postprocess_func: Optional[callable] = None,
+    generalizers: Optional[List[BaseGeneralizationMech]] = None,
     holdout_size=0.2,
-    target_column: Union[None, str] = None,
-    n_records: Union[None, int] = None,
+    target_column: Optional[str] = None,
+    n_records: Optional[int] = None,
     output_keys: List[str] = ["train", "holdout", "synth", "generator"],
-    random_state: Union[None, int] = None,
+    random_state: Optional[int] = None,
     verbose: int = 1,
 ) -> Dict[str, pd.DataFrame]:
     """Generic synthesis pipeline from raw to synth data.

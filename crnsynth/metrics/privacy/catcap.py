@@ -1,6 +1,6 @@
 """This metric describes how difficult it is for an attacker to correctly guess the sensitive information using an algorithm called Correct Attribution Probability (CAP)"""
 
-from typing import Any, Dict, Union
+from typing import Any, Dict, Optional
 
 import numpy as np
 import pandas as pd
@@ -49,7 +49,8 @@ class CategoricalCAPScore(BaseMetric):
         self,
         data_train: pd.DataFrame,
         data_synth: pd.DataFrame,
-        data_holdout: Union[pd.DataFrame, None] = None,
+        data_holdout: Optional[pd.DataFrame] = None,
+        **kwargs
     ) -> Dict:
         self._check_params()
 
